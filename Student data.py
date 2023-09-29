@@ -32,9 +32,28 @@ def display():
     except EOFError:
         f.close()
 
+def update():
+    f = open("students.dat", "rb")
+    rNo = int(input("Enter roll no:"))
+    marks = int(input("Enter new marks: "))
+    lst = []
+    try:
+        while True:
+            p = pickle.load(f)
+            lst.append(p)
+    except EOFError:
+        f.close()
+        
+    for i in range(len(lst)):
+        if lst[i]["rNo"] == rNo:
+            lst[i]["Marks"] = marks
+    f = open('students.dat', 'wb')
+    for i in lst:
+        pickle.dump(i,f)
+
 while True:
     o = int(input("Menu:\n1. Add new record\n2. Search record\
-    \n3. Display records\n4. Exit\nEnter required option: "))
+    \n3. Display records\n4. Update Record\n5. Exit\nEnter required option: "))
     if o == 1:
         add()
     elif o == 2:
@@ -42,6 +61,8 @@ while True:
     elif o == 3:
         display()
     elif o == 4:
+        update()
+    elif o == 5:
         print("Exiting")
         break
     else:
