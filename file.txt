@@ -1,0 +1,5 @@
+Today's weather forecast:
+Overall weather is cloudy.
+Humidity is 87%.
+The chances of rain are pretty low.
+Severe heat is expected.
